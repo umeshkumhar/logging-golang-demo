@@ -7,6 +7,10 @@ WORKDIR /go/src/github.com/umeshkumhar/logging-golang-demo
 # Copy the Go manifests
 COPY logging.go logging.go
 RUN go get github.com/sirupsen/logrus
+RUN go get "github.com/google/uuid"
+RUN go get "k8s.io/apimachinery/pkg/util/rand"
+RUN go get "k8s.io/apimachinery/pkg/util/sets"
+
 RUN GOOS=linux GOARCH=amd64 go build -a -o /opt/app github.com/umeshkumhar/logging-golang-demo
 RUN chmod -R g+rwX /opt/app
 USER 1001
